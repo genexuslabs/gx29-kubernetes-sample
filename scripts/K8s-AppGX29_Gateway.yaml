@@ -1,0 +1,42 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: gx29-gateway
+  namespace: gx29
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: gx29
+  namespace: gx29
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - gx29-gateway
+  http:
+  - name: "mobile app services"
+    match:
+    - uri:
+        prefix: /rest
+    route:
+    - destination:
+        host: apps-mobile-svc
+        port:
+          number: 8080
+  - name: "web app"
+    route:
+    - destination:
+        host: appgx29-web-svc
+        port:
+          number: 8080
