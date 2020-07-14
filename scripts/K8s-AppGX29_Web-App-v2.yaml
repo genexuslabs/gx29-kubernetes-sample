@@ -1,37 +1,21 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: appgx29-web-svc
-  namespace: gx29
-  labels:
-    app: appgx29-web-svc
-    genby: genexus
-    du: AppGX29_Web
-spec:
-  ports:
-    - port: 8080
-  selector:
-    app: appgx29-web-app
-  type: LoadBalancer
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: appgx29-web-app-v1
+  name: appgx29-web-app-v2
   namespace: gx29
   annotations:
-    kubernetes.io/change-cause: "genexus/gx29_web:1.1"
+    kubernetes.io/change-cause: "genexus/gx29_web:2.0"
   labels:
     app: appgx29-web-app
     genby: genexus
     du: AppGX29_Web
-    version: v1
+    version: v2
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: appgx29-web-app
-      version: v1
+      version: v2
   strategy:
     type: Recreate
   template:
@@ -40,10 +24,10 @@ spec:
         app: appgx29-web-app
         genby: genexus
         du: AppGX29_Web
-        version: v1
+        version: v2
     spec:
       containers:
-      - image: genexus/gx29_web:1.1
+      - image: genexus/gx29_web:2.0
         name: appgx29-web
         env:
         - name: GX_COM_GX29_DEFAULT_DB_URL
@@ -57,7 +41,7 @@ spec:
         - name: GX_COM_GX29_GAM_USER_ID
           value: root
         - name: GX_COM_GX29_GAM_USER_PASSWORD
-          value: dbPassword        
+          value: dbPassword    
         ports:
         - containerPort: 8080
           name: external-port
