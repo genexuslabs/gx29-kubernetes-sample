@@ -21,8 +21,8 @@ spec:
     - destination:
         host: appgx29-web-svc
         subset: v1
-      weight: 80
+      weight: 75
     - destination:
         host: appgx29-web-svc
         subset: v2
-      weight: 20
+      weight: 25
