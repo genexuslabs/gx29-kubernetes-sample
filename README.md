@@ -159,9 +159,7 @@ Once we have this in place, we can apply a new VirtualService, like the one in t
 
 If you know try to access the HTML app, one out of four times will be viewing the v2 version. You'll notice it because v2 has a different color (orangeish) in the top menu buttons.
 
-![alt text](./res/v1.png "v1")
-
-![alt text](./res/v2.png "v2")
+![alt text](./res/v1v2.png "v1 vs v2")
 
 ### Observability
 
