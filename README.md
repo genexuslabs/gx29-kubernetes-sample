@@ -174,7 +174,7 @@ $ istioctl dashboard kiali
 
 The output of that command will tell you the url to open up in your browser. Since we installed the demo profile, a user called `admin` with also `admin` as the password has been created for us.
 
-Log in and explore what Kali has to offer and how you can see your app working.
+Log in and explore what Kiali has to offer and how you can see your app working.
 
 ![alt text](./res/Kiali.gif "Kiali rules!")
 
